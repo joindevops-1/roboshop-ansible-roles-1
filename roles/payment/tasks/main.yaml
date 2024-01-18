@@ -1,0 +1,17 @@
+- name: Include vault-encrypted variables
+  include_vars:
+    file: ../../rabbitmq/vars/main.yaml
+- name: app setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-setup
+
+- name: python
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: python
+
+- name: system start
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: systemd
